@@ -1246,7 +1246,7 @@ void prte_odls_base_default_launch_local(int fd, short sd, void *cbdata)
         if (NULL == app->env) {
             app->env = PMIX_ARGV_COPY_COMPAT(prte_launch_environ);
         } else {
-            xfer = pmix_environ_merge(app->env, prte_launch_environ);
+            xfer = pmix_environ_merge(prte_launch_environ, app->env);
             PMIX_ARGV_FREE_COMPAT(app->env);
             app->env = xfer;
         }
